@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['table']});
+      google.charts.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Project');
+        data.addColumn('number', 'Amount');
+        data.addColumn('datetime', 'Date');
+        data.addRows([
+            ['Crimson', {v: 545900.32, f: '$545,900.32'}, {v:new Date(2020,1,3), f: '1/3/2020'}],
+            ['Yokoso LL', {v: 9754.80, f: '$9,754.80'}, {v:new Date(2020,1,17), f: '1/17/2020'}],
+            ['Yokoso Water', {v: 59568.30, f: '$59568.30'}, {v:new Date(2020,1,17), f: '1/17/2020'}],
+            ['1037 Tenant', {v: 489463.19, f: '$489,463.19'}, {v:new Date(2020,1,21), f: '1/21/2020'}],            
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+      }
+    </script>
+  </head>
+  <body>
+    <div id="table_div"></div>
+  </body>
+</html>
