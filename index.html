@@ -19,7 +19,7 @@
       google.charts.setOnLoadCallback(drawCloseoutTable);
       google.charts.setOnLoadCallback(drawMarginTable);
       google.charts.setOnLoadCallback(drawARTable);
-      google.charts.setOnLoadCallback(drawGauge);
+      //google.charts.setOnLoadCallback(drawGauge);
 
       // Callback that creates and populates a data table, 
       // instantiates the pie chart, passes in the data and
@@ -208,7 +208,7 @@
       }
 
       function drawGauge() {
-        var data = google.visualization.arrayToDataTable([
+        var data = new google.visualization.arrayToDataTable([
           ['Label', 'Value'],
           ['In Contract, Not Billed', 5155000]
         ]);
@@ -218,7 +218,7 @@
         };
 
         var chart = new google.visualization.Gauge(document.getElementById('gauge_div'));
-        chart.draw(data, options);
+        // chart.draw(data, options);
       }
 
 
@@ -239,7 +239,7 @@
                 setTimeout(nextPage, TIME_PER_PAGE);
             }
 
-            // nextPage();
+           nextPage();
             
         });
 
@@ -262,7 +262,7 @@
         </div>
         
       </div>
-      <div class="page currentpage">
+      <div class="page">
         <h1>Production</h1>
         <div class="leftside">
         <h2>Total Billed this Quarter</h2>
@@ -273,7 +273,7 @@
         <div class="rightside">
             <h2>In Contract Not Billed</h2>
             <p class="callout"><b>$5,154,981</b></p>
-            <div id="gauge_div" style="width:400; height:400"></div>            
+            
         </div>
         <div class="clear"></div>
         <h2>Total Billed This Year</h2>  
