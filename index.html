@@ -150,23 +150,26 @@
           ['Month', 'Billed'],
           ['January', 300000],
           ['February', 375000],        
-          ['March', 0],
-          ['April', 0],
-          ['May', 0],
-          ['June', 0],
-          ['July', 0],
-          ['August', 0],
-          ['September', 0],
-          ['October', 0],
-          ['November', 0],
-          ['December', 0],
+          ['March', null],
+          ['April', null],
+          ['May', null],
+          ['June', null],
+          ['July', null],
+          ['August', null],
+          ['September', null],
+          ['October', null],
+          ['November', null],
+          ['December', null],
       ]);
 
       var options = {
         width: 1000,
         height: 800,
         legend: 'none',
-        vAxis: {minValue: 0},        
+        vAxis: {minValue: 0},
+        series: {3: {
+          color: 'transparent'
+        }}        
       };
 
         
@@ -318,7 +321,7 @@
                 setTimeout(nextPage, TIME_PER_PAGE);
             }
 
-           nextPage();
+          nextPage();
             
         });
 
@@ -344,8 +347,7 @@
         </div>
         
       </div>
-      <div class="page">        
-        <div class="productionschedule"></div>
+      <div class="page productionschedule">                
       </div>
       <div class="page">
         <h1>Production</h1>
@@ -371,7 +373,6 @@
         <div class="leftside">
           <h2>Total Billed per Month</h2>
           <div id="monthly_billed_chart_div" style="width:900; height:900"></div>
-        
         </div>
         <div class="rightside">
           <h2>Active, Billable Jobs</h2>

@@ -12,7 +12,10 @@ body {
 
 .productionschedule {
     background: url(ComptonSchedule.jpg) no-repeat center center fixed;
-    background-size: cover;
+    background-size: contain;
+    height: 1080px;
+    width: 1920px;
+    margin-left: -100px;
 }
 
 h1 {
