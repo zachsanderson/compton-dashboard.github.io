@@ -12,9 +12,12 @@
 
       // Set a callback to run when the Google Visualization API is loaded.
       google.charts.setOnLoadCallback(drawSignedContractsTable);
+      google.charts.setOnLoadCallback(drawOpportunitiesTable);
       google.charts.setOnLoadCallback(drawTotalSoldChart);
       google.charts.setOnLoadCallback(drawTotalBilledChart);
       google.charts.setOnLoadCallback(drawTotalBilledYearChart);
+      google.charts.setOnLoadCallback(drawMonthlyBilledChart);
+      google.charts.setOnLoadCallback(drawActiveJobsTable);
       google.charts.setOnLoadCallback(drawFinalInspectionsTable);
       google.charts.setOnLoadCallback(drawCloseoutTable);
       google.charts.setOnLoadCallback(drawMarginTable);
@@ -41,6 +44,25 @@
         // Instantiate and draw our chart, passing in some options.
         var table = new google.visualization.Table(document.getElementById('table_div'));
         table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+
+        
+      }
+
+      function drawOpportunitiesTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Project');       
+        data.addRows([
+            ['Legacy Maintenance Services'],
+            ['Innerspace'],
+            ['You Paint Pottery'],
+            ['Coastal Local Seafood'],            
+        ]);
+
+        
+        
+        // Instantiate and draw our chart, passing in some options.
+        var table = new google.visualization.Table(document.getElementById('opportunities_table_div'));
+        table.draw(data, {showRowNumber: true, width: '100%', height: '100%', allowHtml: true, cssClassNames: {headerCell: 'noHeader'}});
 
         
       }
@@ -119,6 +141,65 @@
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.BarChart(document.getElementById('billed_year_chart_div'));
         chart.draw(data, options);
+
+        
+      }
+
+      function drawMonthlyBilledChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Month', 'Billed'],
+          ['January', 300000],
+          ['February', 375000],        
+          ['March', 0],
+          ['April', 0],
+          ['May', 0],
+          ['June', 0],
+          ['July', 0],
+          ['August', 0],
+          ['September', 0],
+          ['October', 0],
+          ['November', 0],
+          ['December', 0],
+      ]);
+
+      var options = {
+        width: 1000,
+        height: 800,
+        legend: 'none',
+        vAxis: {minValue: 0},        
+      };
+
+        
+        
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('monthly_billed_chart_div'));
+        chart.draw(data, options);
+
+        
+      }
+
+      function drawActiveJobsTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Number');
+        data.addColumn('string', 'Project');
+        data.addColumn('string', 'PM');
+        data.addRows([
+            ['19009', 'Oxide', 'Josh'],
+            ['19026', 'Yenkin', 'Jim'],
+            ['19027', 'Waterloo', 'Harold'],
+            ['19029', 'Brothers Drake', 'Mike'],
+            ['19030', 'Yokoso', 'Jeff'],
+            ['19031', '1037 Parsons', 'Jim'],
+            ['19032', 'GBQ', 'Jeff'],
+            ['20001', 'Crimson', 'Jeff'],
+            ['20002', 'Yokoso Water', 'Jeff'],
+        ]);
+
+        
+        
+        // Instantiate and draw our chart, passing in some options.
+        var table = new google.visualization.Table(document.getElementById('active_jobs_table_div'));
+        table.draw(data, {showRowNumber: false, width: '100%', height: '100%'});
 
         
       }
@@ -237,7 +318,7 @@
                 setTimeout(nextPage, TIME_PER_PAGE);
             }
 
-           //nextPage();
+           nextPage();
             
         });
 
@@ -252,17 +333,19 @@
         <h2>Q1 Signed Contracts &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;Rock = 6 total</h2>
         <div id="table_div" style="width:900; height:350"></div>
         <h2>Total number of contracts</h2>
-        <p><b class="callout">4</b><span class="asof"> of 35 (goal)</span></p>
+        <p><b class="callout">4 </b><span class="asof"> of 35 (goal)</span></p>
         </div>
         <div class="rightside">
+        <h2>Nate's Opportunity List</h2>
+        <div id="opportunities_table_div" style="width:600; height:250"></div>                
         <h2>Total $ sold this year</h2>
         <div id="chart_div" style="width:400; height:200"></div>
-        <h2><b>$1,104,686.60</b> of $14 million (goal)</h2>
+        <p><b class="callout">$1,104,687 </b><span class="asof"> of $14 million (goal)</span></p>  
         </div>
         
       </div>
-      <div class="page">
-        <embed src=”ComptonSchedule.pdf" type=”application/pdf” width=”100%” height=”100%”>
+      <div class="page">        
+        <div class="productionschedule"></div>
       </div>
       <div class="page">
         <h1>Production</h1>
@@ -284,6 +367,18 @@
         
       </div>
       <div class="page">
+        <h1>Production</h1>
+        <div class="leftside">
+          <h2>Total Billed per Month</h2>
+          <div id="monthly_billed_chart_div" style="width:900; height:900"></div>
+        
+        </div>
+        <div class="rightside">
+          <h2>Active, Billable Jobs</h2>
+          <div id="active_jobs_table_div" style="width:550; height:700"></div>
+        
+      </div>
+      <div class="page">
         <h1>Job Statuses</h1>
         <div class="leftside" style="width: 800px">
             <h2>Jobs to Final Inspect this Quarter</h2>
@@ -296,7 +391,7 @@
         
         
       </div>
-      <div class="page currentpage">
+      <div class="page">
         <h1>Finance</h1>
         <div class="leftside">
         <div id="margin_table_div" style="width:1000; height:180"></div>
