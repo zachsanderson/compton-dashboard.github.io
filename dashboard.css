@@ -25,7 +25,13 @@ h1 {
 
 h2 {
     font-size: 1.2em;
+    margin-bottom: 5px;
+    margin-top: 50px;
     
+}
+
+p {
+    margin-top: 0px;
 }
 
 .page {
@@ -50,6 +56,7 @@ h2 {
 
 .rightside {
     margin-left: 1100px;
+    padding-top: 1px;    
 }
 
 .clear {
