@@ -70,7 +70,7 @@
       function drawTotalSoldChart() {
         var data = google.visualization.arrayToDataTable([
         ['Time', 'Current', { role: 'style' }, 'Goal', { role: 'style' }, 'Stretch', { role: 'style' }  ],
-        ['', 1104686.6, 'gold', 12895313.4, 'black', 1000000, 'gray']
+        ['', 1104686.6, '#ffd60f', 12895313.4, 'black', 1000000, 'gray']
       ]);
 
       var options = {
@@ -96,12 +96,12 @@
       function drawTotalBilledChart() {
         var data = google.visualization.arrayToDataTable([
         ['Time', 'Current', { role: 'style' }, 'Goal', { role: 'style' }, 'Stretch', { role: 'style' } ],
-        ['', 300000, 'gold', 2700000, 'black', 1000000, 'gray']
+        ['', 300000, '#ffd60f', 2700000, 'black', 1000000, 'gray']
       ]);
 
       var options = {
         width: 600,
-        height: 200,
+        height: 150,
         legend: 'none',
         bar: { groupWidth: '80%' },
         isStacked: true,
@@ -122,12 +122,12 @@
       function drawTotalBilledYearChart() {
         var data = google.visualization.arrayToDataTable([
         ['Time', 'Current', { role: 'style' }, 'Goal', { role: 'style' }, 'Stretch', { role: 'style' } ],
-        ['', 300000, 'gold', 13700000, 'black', 1000000, 'gray']
+        ['', 300000, '#ffd60f', 13700000, 'black', 1000000, 'gray']
       ]);
 
       var options = {
         width: 1600,
-        height: 200,
+        height: 150,
         legend: 'none',
         bar: { groupWidth: '100%' },
         isStacked: true,
@@ -146,30 +146,33 @@
       }
 
       function drawMonthlyBilledChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Month', 'Billed'],
-          ['January', 300000],
-          ['February', 375000],        
-          ['March', null],
-          ['April', null],
-          ['May', null],
-          ['June', null],
-          ['July', null],
-          ['August', null],
-          ['September', null],
-          ['October', null],
-          ['November', null],
-          ['December', null],
-      ]);
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Month');
+        data.addColumn('number', 'Billed');
+        data.addColumn({type: 'number', role: 'annotation'});
+
+        data.addRows([
+          ['January', 300000, 300000],
+          ['February', 375000, 375000],        
+          ['March', null, null],
+          ['April', null, null],
+          ['May', null, null],
+          ['June', null, null],
+          ['July', null, null],
+          ['August', null, null],
+          ['September', null, null],
+          ['October', null, null],
+          ['November', null, null],
+          ['December', null, null],
+        ]);                        
 
       var options = {
         width: 1000,
-        height: 800,
+        height: 750,
         legend: 'none',
+        chartArea: {'width': '90%', 'height': '80%'},
         vAxis: {minValue: 0},
-        series: {3: {
-          color: 'transparent'
-        }}        
+        hAxis: {slantedText: true}        
       };
 
         
@@ -352,8 +355,8 @@
         <h1>Production</h1>
         <div class="leftside">
         <h2>Total Billed this Quarter</h2>
-        <div id="billed_chart_div" style="width:400; height:200"></div>
-        <h2><b>$300,234</b> of $3 million (goal)</b></h2>      
+        <div id="billed_chart_div" style="width:400;"></div>
+        <p><b class="callout">$300,234 </b><span class="asof"> of $3 million (goal)</span></p>      
         
         </div>
         <div class="rightside">
@@ -363,8 +366,8 @@
         </div>
         <div class="clear"></div>
         <h2>Total Billed This Year</h2>  
-        <div id="billed_year_chart_div" style="width:400; height:200"></div>
-        <h2><b>$300,234</b> of $14 million (goal)</b></h2>
+        <div id="billed_year_chart_div" style="width:400;"></div>
+        <p><b class="callout">$300,234 </b><span class="asof"> of $14 million (goal)</span></p>          
         
       </div>
       <div class="page">

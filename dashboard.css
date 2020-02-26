@@ -86,3 +86,8 @@ text {
 
 .noHeader { background-color: #FFF; border-collapse: collapse; border:none; font-size: 0px; }
 
+.google-visualization-table-th {
+    text-align: left !important;
+    background-color:#ffd60f !important;
+}
+
